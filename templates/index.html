@@ -1,15 +1,16 @@
+
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Build a Blog</h1>
+<h1>Blogz</h1>
 <div class="blogs">
-{% if blog|length == 0 %}
-    <p>No posts yet. <a href="/newpost">Write one!</a></p>
+{% if users|length == 0 %}
+    <p>Weird. No one's signed up yet. <a href="/signup">Be the first!</a></p>
 
 {% else %}
-    {% for post in blog %}
-        <h2><a href="/?id={{post.id}}">{{post.title}}</a></h2>
-        <p>{{post.content}}</p>
+    <ul id="blogs">
+    {% for user in users %}
+        <li><a href="/blog?user={{user.id}}">{{user.username}}</a></li>
     {% endfor %}
 {% endif %}
 </div>
